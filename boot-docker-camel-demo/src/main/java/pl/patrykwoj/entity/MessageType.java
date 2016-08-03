@@ -1,4 +1,4 @@
-package pl.pkwk.entity;
+package pl.patrykwoj.entity;
 
 import java.io.Serializable;
 
@@ -10,7 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import pl.pkwk.util.MessageTypeEnum;
+import pl.patrykwoj.util.MessageTypeEnum;
 
 @Entity
 public class MessageType implements Serializable {

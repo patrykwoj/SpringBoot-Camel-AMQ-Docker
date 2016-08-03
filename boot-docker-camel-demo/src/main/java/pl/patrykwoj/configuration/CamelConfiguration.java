@@ -1,4 +1,4 @@
-package pl.pkwk.configuration;
+package pl.patrykwoj.configuration;
 
 import javax.annotation.PostConstruct;
 

@@ -1,8 +1,8 @@
-package pl.pkwk.dto;
+package pl.patrykwoj.dto;
 
 import java.io.Serializable;
 
-import pl.pkwk.util.MessageTypeEnum;
+import pl.patrykwoj.util.MessageTypeEnum;
 
 public class Message implements Serializable {
 	

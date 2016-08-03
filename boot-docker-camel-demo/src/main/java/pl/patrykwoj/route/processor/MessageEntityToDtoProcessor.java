@@ -1,4 +1,4 @@
-package pl.pkwk.route.processor;
+package pl.patrykwoj.route.processor;
 
 import java.util.Collections;
 import java.util.List;
@@ -21,9 +21,9 @@ public class MessageEntityToDtoProcessor implements Processor {
 	public void process(Exchange exchange) throws Exception {
 
 		@SuppressWarnings("unchecked")
-		Iterable<pl.pkwk.entity.Message> body = (Iterable<pl.pkwk.entity.Message>) exchange.getIn().getBody();
-		List<pl.pkwk.dto.Message> output = StreamSupport.stream(body.spliterator(), false)
-				.map((pl.pkwk.entity.Message m) -> modelMapper.map(m, pl.pkwk.dto.Message.class))
+		Iterable<pl.patrykwoj.entity.Message> body = (Iterable<pl.patrykwoj.entity.Message>) exchange.getIn().getBody();
+		List<pl.patrykwoj.dto.Message> output = StreamSupport.stream(body.spliterator(), false)
+				.map((pl.patrykwoj.entity.Message m) -> modelMapper.map(m, pl.patrykwoj.dto.Message.class))
 				.collect(Collectors.toList());
 		Collections.reverse(output);
 		exchange.getIn().setBody(output); // to use getOut, I would have to copy

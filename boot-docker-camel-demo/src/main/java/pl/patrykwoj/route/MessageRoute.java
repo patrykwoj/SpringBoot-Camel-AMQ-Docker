@@ -1,4 +1,4 @@
-package pl.pkwk.route;
+package pl.patrykwoj.route;
 import org.apache.camel.BeanInject;
 import org.apache.camel.Exchange;
 import org.apache.camel.ExchangePattern;
@@ -8,7 +8,7 @@ import org.apache.camel.model.rest.RestParamType;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 
-import pl.pkwk.service.MessageService;
+import pl.patrykwoj.service.MessageService;
 
 @Component
 public class MessageRoute extends RouteBuilder {
@@ -23,17 +23,17 @@ public class MessageRoute extends RouteBuilder {
 		
 		rest("/messages/get").produces("application/json")
 			.get("/last")
-				.outType(pl.pkwk.dto.Message.class)
+				.outType(pl.patrykwoj.dto.Message.class)
 				.param().name("limit").type(RestParamType.query).defaultValue("1")
 				.endParam().to("direct:outMessage")
 			.get("/last/{limit}")
-				.outType(pl.pkwk.dto.Message.class)
+				.outType(pl.patrykwoj.dto.Message.class)
 				.to("direct:outMessage");
 		
 		rest("/messages/add").produces("application/json").consumes("application/json")
 			.post()
-				.type(pl.pkwk.dto.Message[].class)
-				.outType(pl.pkwk.dto.Message.class)
+				.type(pl.patrykwoj.dto.Message[].class)
+				.outType(pl.patrykwoj.dto.Message.class)
 				.to("direct:inMessage");
 	
 		

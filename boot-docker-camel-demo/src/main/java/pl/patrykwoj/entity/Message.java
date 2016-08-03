@@ -1,4 +1,4 @@
-package pl.pkwk.entity;
+package pl.patrykwoj.entity;
 
 import java.io.Serializable;
 

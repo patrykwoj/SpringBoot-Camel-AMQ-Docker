@@ -1,4 +1,4 @@
-package pl.pkwk.service.impl;
+package pl.patrykwoj.service.impl;
 
 import java.util.List;
 
@@ -10,9 +10,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
-import pl.pkwk.dao.MessageRepository;
-import pl.pkwk.dao.MessageTypeRepository;
-import pl.pkwk.service.MessageService;
+import pl.patrykwoj.dao.MessageRepository;
+import pl.patrykwoj.dao.MessageTypeRepository;
+import pl.patrykwoj.service.MessageService;
 
 @Service
 public class MessageServiceImpl implements MessageService {
@@ -25,16 +25,16 @@ public class MessageServiceImpl implements MessageService {
 	@Autowired
 	MessageTypeRepository messageTypeRepository;
 
-	public List<pl.pkwk.entity.Message> getLastMessages(String limit) {
-		Page<pl.pkwk.entity.Message> messages = messageRepository
+	public List<pl.patrykwoj.entity.Message> getLastMessages(String limit) {
+		Page<pl.patrykwoj.entity.Message> messages = messageRepository
 				.findAll(new PageRequest(0, Integer.parseInt(limit), Direction.DESC, SORT_BY_PROPERTY));
 		return messages.getContent();
 	}
 
 	@Transactional
-	public Iterable<pl.pkwk.entity.Message> addMessages(List<pl.pkwk.entity.Message> input) {
+	public Iterable<pl.patrykwoj.entity.Message> addMessages(List<pl.patrykwoj.entity.Message> input) {
 		input.forEach(item -> item.setType(messageTypeRepository.findOneByName(item.getType().getName())));
-		Iterable<pl.pkwk.entity.Message> result = messageRepository.save(input);
+		Iterable<pl.patrykwoj.entity.Message> result = messageRepository.save(input);
 		return result;
 	}
 
