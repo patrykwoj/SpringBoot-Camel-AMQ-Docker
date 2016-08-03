@@ -1,4 +1,4 @@
-package pl.pkwk.route;
+package pl.patrykwoj.route;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.rest.RestBindingMode;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package pl.pkwk.util;
+package pl.patrykwoj.util;
 
 public enum MessageTypeEnum {
 	INFO,WARN,ERROR;

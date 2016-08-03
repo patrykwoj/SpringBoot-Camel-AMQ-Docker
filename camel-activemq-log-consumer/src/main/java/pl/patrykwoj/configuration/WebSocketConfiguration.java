@@ -1,4 +1,4 @@
-package pl.pkwk.configuration;
+package pl.patrykwoj.configuration;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;

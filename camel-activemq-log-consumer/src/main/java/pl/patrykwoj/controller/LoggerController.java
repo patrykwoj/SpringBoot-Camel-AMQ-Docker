@@ -1,11 +1,11 @@
-package pl.pkwk.controller;
+package pl.patrykwoj.controller;
 
 import org.apache.log4j.Logger;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 
-import pl.pkwk.dto.Message;
+import pl.patrykwoj.dto.Message;
 
 @Controller
 public class LoggerController {
