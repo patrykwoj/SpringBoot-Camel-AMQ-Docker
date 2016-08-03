@@ -1,0 +1,41 @@
+package pl.pkwk.dto;
+
+import java.io.Serializable;
+
+import pl.pkwk.util.MessageTypeEnum;
+
+public class Message implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private MessageTypeEnum type;
+	
+	private String text;
+
+	public Message() {
+	}
+
+	public Message(MessageTypeEnum type, String text) {
+		this.type = type;
+		this.text = text;
+	}
+
+	public MessageTypeEnum getType() {
+		return type;
+	}
+
+	public void setType(MessageTypeEnum type) {
+		this.type = type;
+	}
+	
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+}

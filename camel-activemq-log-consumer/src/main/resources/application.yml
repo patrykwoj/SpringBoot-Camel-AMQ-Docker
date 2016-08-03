@@ -1,0 +1,11 @@
+spring:
+  activemq:
+    packages:
+      trust-all: true
+    broker-url: tcp://192.168.99.100:32768
+    pool:
+      enabled: true
+      
+camel:
+  springboot:
+    type-conversion: true

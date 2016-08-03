@@ -1,0 +1,17 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true 
+  activemq:
+    broker-url: tcp://192.168.99.100:32768
+    pooled: true
+    
+
+camel:
+  springboot:
+    type-conversion: true
+    
