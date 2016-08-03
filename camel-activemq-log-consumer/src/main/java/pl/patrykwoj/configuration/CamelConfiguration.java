@@ -19,17 +19,17 @@ import org.springframework.context.annotation.Configuration;
 public class CamelConfiguration {
 
 	private static final Logger LOGGER = Logger.getLogger(CamelConfiguration.class);
-    private static final String CAMEL_SERVLET_NAME = "CamelServlet";
+    //private static final String CAMEL_SERVLET_NAME = "CamelServlet";
 	
 	@Autowired
 	CamelContext camelContext;
 
-	@Bean
+/*	@Bean
     public ServletRegistrationBean servletRegistrationBean() {
         ServletRegistrationBean registration = new ServletRegistrationBean(new CamelHttpTransportServlet());
         registration.setName(CAMEL_SERVLET_NAME);
         return registration;
-    }
+    }*/
 	
 	@Bean
 	public DefaultDebugger defaultDebugger() {

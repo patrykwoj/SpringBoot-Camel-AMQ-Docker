@@ -11,6 +11,6 @@ public class MessageRoute extends RouteBuilder {
 	
 		restConfiguration().component("servlet").bindingMode(RestBindingMode.json).dataFormatProperty("prettyPrint", "true");
 		
-		from("activemq:queue:logs").to("ahc-ws://localhost:80/logger").end();
+		from("activemq:queue:logs").to("ahc-ws://localhost:80/logger").end(); //tu jest error
 	}
 }
