@@ -94,3 +94,5 @@ tmp/
 local.properties
 .settings/
 .loadpath
+.mvn
+.mvn/
