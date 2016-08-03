@@ -1,4 +1,4 @@
-package pl.pkwk;
+package pl.patrykwoj;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
