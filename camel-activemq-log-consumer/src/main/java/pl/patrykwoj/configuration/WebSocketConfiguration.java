@@ -12,12 +12,12 @@ public class WebSocketConfiguration extends AbstractWebSocketMessageBrokerConfig
 
 	@Override
 	public void configureMessageBroker(MessageBrokerRegistry config) {
-		config.enableSimpleBroker("/info", "/warn", "/error", "all");
+		config.enableSimpleBroker("/messages");
 	}
 
 	@Override
 	public void registerStompEndpoints(StompEndpointRegistry registry) {
-		registry.addEndpoint("/logger").withSockJS();
+		registry.addEndpoint("/loggerwebsocket").withSockJS();
 	}
 
 }

@@ -10,18 +10,29 @@
         function setConnected(connected) {
             document.getElementById('connect').disabled = connected;
             document.getElementById('disconnect').disabled = !connected;
-            document.getElementById('conversationDiv').style.visibility = connected ? 'visible' : 'hidden';
-            document.getElementById('response').innerHTML = '';
+            document.getElementById('response').style.visibility = connected ? 'visible' : 'hidden';
+            document.getElementById('info').innerHTML = '';
+            document.getElementById('warn').innerHTML = '';
+            document.getElementById('error').innerHTML = '';
         }
 
         function connect() {
-            var socket = new SockJS('/logger');
+            var socket = new SockJS('/loggerwebsocket');
             stompClient = Stomp.over(socket);
             stompClient.connect({}, function(frame) {
                 setConnected(true);
                 console.log('Connected: ' + frame);
-                stompClient.subscribe('/logger/all', function(message){
-                    showMessage(JSON.parse(message.body).content);
+                stompClient.subscribe('/messages/info', function(message){
+                    console.log('Received info!')
+                	showMessage(JSON.parse(message.body).content);
+                });
+                stompClient.subscribe('/messages/warn', function(message){
+                    console.log('Received warn!')
+                	showMessage(JSON.parse(message.body).content);
+                });
+                stompClient.subscribe('/messages/error', function(message){
+                    console.log('Received error!')
+                	showMessage(JSON.parse(message.body).content);
                 });
             });
         }
@@ -34,8 +45,27 @@
             console.log("Disconnected");
         }
 
-        function showMessage(message) {
-            var response = document.getElementById('response');
+        function showMessageInfo(message) {
+        	console.log('Received payload info: ' + message);
+            var response = document.getElementById('info');
+            var p = document.createElement('p');
+            p.style.wordWrap = 'break-word';
+            p.appendChild(document.createTextNode(message));
+            response.appendChild(p);
+        }
+        
+        function showMessageWarn(message) {
+        	console.log('Received payload warn: ' + message);
+            var response = document.getElementById('warn');
+            var p = document.createElement('p');
+            p.style.wordWrap = 'break-word';
+            p.appendChild(document.createTextNode(message));
+            response.appendChild(p);
+        }
+        
+        function showMessageError(message) {
+        	console.log('Received payload error: ' + message);
+            var response = document.getElementById('error');
             var p = document.createElement('p');
             p.style.wordWrap = 'break-word';
             p.appendChild(document.createTextNode(message));
@@ -51,8 +81,10 @@
         <button id="connect" onclick="connect();">Connect</button>
         <button id="disconnect" disabled="disabled" onclick="disconnect();">Disconnect</button>
     </div>
-     <div id="conversationDiv">
-        <p id="response"></p>
+     <div id="response">
+        <p id="info"></p>
+        <p id="warn"></p>
+        <p id="error"></p>
     </div>
 </div>
 </body>
